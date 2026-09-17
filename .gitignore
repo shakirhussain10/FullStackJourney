@@ -1,0 +1,12 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# System & IDE files
+.DS_Store
+.vscode/
+.idea/
+EOF
