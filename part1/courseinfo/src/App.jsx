@@ -53,8 +53,19 @@
 
 import { useState } from "react";
 
-const App = () => {
-  const History = (props) => {
+const Statistics = ({ good, neutral, bad, all, average, positive }) => {
+  return <div>
+      <p>good {good}</p>
+      <p>neutral {neutral}</p>
+      <p>bad {bad}</p>
+      <p>all {all}</p>
+      <p>average {average}</p>
+      <p>positive {positive}</p>
+  </div>
+
+}
+
+const History = (props) => {
     if (props.allClicks.length === 0) {
       return <div>the app is used by pressing the buttons</div>;
     }
@@ -65,6 +76,9 @@ const App = () => {
     <button onClick={onClick}>{text}</button>
   );
 
+
+const App = () => {
+  
   // save clicks of each button to its own state
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
@@ -105,12 +119,10 @@ const App = () => {
 
       <h1>statistics</h1>
 
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {total}</p>
-      <p>average {average}</p>
-      <p>positive {positive}</p>
+     
+
+      <Statistics good={good} neutral={neutral} bad={bad} all={total} 
+      average={average} positive={positive}/>
 
       <History allClicks={allClicks} />
     </div>
