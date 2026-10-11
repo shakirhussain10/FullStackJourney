@@ -54,31 +54,36 @@
 import { useState } from "react";
 
 const Statistics = ({ good, neutral, bad, all, average, positive }) => {
-  return <div>
+  if (all === 0) {
+    return (
+      <div>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
+  
+  return (
+    <div>
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
       <p>all {all}</p>
       <p>average {average}</p>
       <p>positive {positive}</p>
-  </div>
-
-}
+    </div>
+  );
+};
 
 const History = (props) => {
-    if (props.allClicks.length === 0) {
-      return <div>the app is used by pressing the buttons</div>;
-    }
+  if (props.allClicks.length === 0) {
+    return <div>the app is used by pressing the buttons</div>;
+  }
 
-    return <div>button press history: {props.allClicks.join(" ")}</div>;
-  };
-  const Button = ({ onClick, text }) => (
-    <button onClick={onClick}>{text}</button>
-  );
-
+  return <div>button press history: {props.allClicks.join(" ")}</div>;
+};
+const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 
 const App = () => {
-  
   // save clicks of each button to its own state
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
@@ -119,10 +124,14 @@ const App = () => {
 
       <h1>statistics</h1>
 
-     
-
-      <Statistics good={good} neutral={neutral} bad={bad} all={total} 
-      average={average} positive={positive}/>
+      <Statistics
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        all={total}
+        average={average}
+        positive={positive}
+      />
 
       <History allClicks={allClicks} />
     </div>
