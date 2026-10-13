@@ -1,56 +1,3 @@
-// import { useState } from 'react'
-
-// const History = (props) => {
-//   if (props.allClicks.length === 0) {
-//     return (
-//       <div>
-//         the app is used by pressing the buttons
-//       </div>
-//     )
-//   }
-//   return (
-//     <div>
-//       button press history: {props.allClicks.join(' ')}
-//     </div>
-//   )
-// }
-
-// const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
-
-// const App = () => {
-//   const [left, setLeft] = useState(0)
-//   const [right, setRight] = useState(0)
-//   const [allClicks, setAll] = useState([])
-
-//   const [total, setTotal] = useState(0)
-
-//   const handleLeftClick = () => {
-//     setAll(allClicks.concat('L'))
-//     const updatedLeft = left + 1
-//     setLeft(updatedLeft)
-//     setTotal(updatedLeft + right)
-//   }
-
-//   const handleRightClick = () => {
-//     setAll(allClicks.concat('R'))
-//     const updatedRight = right + 1
-//     setRight(updatedRight + 1)
-//     setTotal(left + updatedRight)
-//   }
-
-//   return (
-//     <div>
-//       {left}
-//       <Button onClick={handleLeftClick} text='left' />
-//       <Button onClick={handleRightClick}text='right' />
-//       {right}
-//       <History allClicks={allClicks}/>
-
-//     </div>
-//   )
-// }
-// export default App
-
 import { useState } from "react";
 
 const Statistics = ({ good, neutral, bad, all, average, positive }) => {
@@ -64,25 +11,27 @@ const Statistics = ({ good, neutral, bad, all, average, positive }) => {
 
   return (
     <div>
-      <StatisticsLine text="good" value={good} />
-      <StatisticsLine text="neutral" value={neutral} />
-      <StatisticsLine text="bad" value={bad} />
-      <StatisticsLine text="all" value={all} />
-      <StatisticsLine text="average" value={average} />
-      <StatisticsLine text="positve" value={positive} />
-      <StatisticsLine text="good" value={good} />
+      <table>
+        <tbody>
+          <StatisticsLine text="good" value={good} />
+          <StatisticsLine text="neutral" value={neutral} />
+          <StatisticsLine text="bad" value={bad} />
+          <StatisticsLine text="all" value={all} />
+          <StatisticsLine text="average" value={average} />
+          <StatisticsLine text="positve" value={positive} />
+        </tbody>
+      </table>
     </div>
   );
 };
 const StatisticsLine = (props) => {
-return (
-  <div>
-    <p>
-      {props.text} {props.value}
-    </p>
-    </div>
-)
-}
+  return (
+    <tr>
+      <td>{props.text}</td>
+      <td>{props.value}</td>
+    </tr>
+  );
+};
 
 const History = (props) => {
   if (props.allClicks.length === 0) {
