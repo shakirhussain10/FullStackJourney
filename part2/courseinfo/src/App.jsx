@@ -1,14 +1,19 @@
-import Course from './components/Course'
+import { useState } from 'react'
+import Note from './components/Note'
 
-const App = ({ course }) => {
-  return (
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes)
+  
+return (
     <div>
-      <h1>Web development curriculum</h1>
-      {course.map(course => (
-      <Course key={course.id} course={course} />
-      ))}
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => 
+          <Note key={note.id} note={note} />
+        )}
+      </ul>
     </div>
-)
+  )
 }
 
-export default App
+export default App 
