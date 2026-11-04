@@ -14,8 +14,6 @@ return (
       </ul>
     </div>
   )
-}//hel
-
-{}
+}
 
 export default App 
