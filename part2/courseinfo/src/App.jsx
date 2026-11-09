@@ -9,7 +9,7 @@ return (
       <h1>Notes</h1>
       <ul>
         {notes.map(note => 
-          <Note key={note.id} note={note} />
+          <Note key={note.id} note={note} hey />
         )}
       </ul>
     </div>
