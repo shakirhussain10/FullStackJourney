@@ -9,7 +9,8 @@ return (
       <h1>Notes</h1>
       <ul>
         {notes.map(note => 
-          <Note key={note.id} note={note}bbb />
+          <Note key={note.id} note={note}uu
+           />
         )}
       </ul>
     </div>
